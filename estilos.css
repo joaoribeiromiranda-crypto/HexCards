@@ -1,3 +1,38 @@
+/* Arquitetura de Variáveis CSS Avançada */
+:root {
+    --fator-fonte: 100%;
+    
+    /* Cores - Tema Claro (Natureza Orgânica) */
+    --cor-fundo: #e8f0ec;
+    --orbe-cor-1: rgba(74, 222, 128, 0.4);
+    --orbe-cor-2: rgba(34, 197, 94, 0.3);
+    --orbe-cor-3: rgba(15, 118, 110, 0.25);
+    --bg-card-frente: rgba(255, 255, 255, 0.9);
+    --bg-card-verso: rgba(240, 248, 245, 0.95);
+    --texto-principal: #1e293b;
+    --texto-secundario: #334155;
+    --borda: rgba(34, 197, 94, 0.3);
+    --blur-menu: rgba(255, 255, 255, 0.8);
+    --sombra-card: rgba(15, 118, 110, 0.15);
+    --bg-rodape: rgba(255, 255, 255, 0.5);
+}
+
+body.tema-escuro {
+    /* Cores - Tema Escuro (Floresta Profunda Noturna) */
+    --cor-fundo: #0b1311;
+    --orbe-cor-1: rgba(21, 128, 61, 0.3);
+    --orbe-cor-2: rgba(6, 78, 59, 0.4);
+    --orbe-cor-3: rgba(2, 44, 34, 0.5);
+    --bg-card-frente: rgba(21, 32, 30, 0.9);
+    --bg-card-verso: rgba(13, 23, 21, 0.95);
+    --texto-principal: #f8fafc;
+    --texto-secundario: #cbd5e1;
+    --borda: rgba(74, 222, 128, 0.2);
+    --blur-menu: rgba(21, 32, 30, 0.85);
+    --sombra-card: rgba(0, 0, 0, 0.6);
+    --bg-rodape: rgba(13, 23, 21, 0.6);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,42 +40,173 @@
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: var(--fator-fonte);
     min-height: 100vh;
     padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.6s ease;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Fundo Fluido Tridimensional (Profundidade Ativa) */
+.fundo-animado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.orbe {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: flutuarOrbe 20s infinite alternate ease-in-out;
+}
+
+.orbe-1 { width: 500px; height: 500px; background: var(--orbe-cor-1); top: -10%; left: -10%; }
+.orbe-2 { width: 600px; height: 600px; background: var(--orbe-cor-2); bottom: -20%; right: -10%; animation-duration: 25s; }
+.orbe-3 { width: 400px; height: 400px; background: var(--orbe-cor-3); top: 40%; left: 50%; animation-duration: 18s; }
+
+/* Interface de Entrada Imersiva (Splash Screen) */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #143622 0%, #081a10 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s ease;
+}
+
+.splash-screen.esconder {
+    opacity: 0;
+    transform: translateY(-100vh);
+}
+
+.splash-conteudo {
+    text-align: center;
+    color: #ffffff;
+    padding: 40px;
+    max-width: 550px;
+}
+
+.splash-emoji {
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+    animation: balancoCoala 2.5s infinite ease-in-out;
+    display: inline-block;
+}
+
+.splash-conteudo h1 {
+    font-size: 3rem;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #4ade80, #a3e635);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.splash-conteudo p {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    color: #a7f3d0;
+    line-height: 1.6;
+}
+
+.btn-principal {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #042f1a;
+    background: linear-gradient(135deg, #a3e635 0%, #4ade80 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(74, 222, 128, 0.6);
+}
+
+/* Partículas de Folhas Interativas */
+#container-folhas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.folha-eucalipto {
+    position: absolute;
+    top: -60px;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border-radius: 5% 95% 40% 95%;
+    opacity: 0.6;
+    transform: rotate(45deg);
+    animation: quedaFolha linear infinite;
+    pointer-events: auto;
+}
+
+/* Conteúdo Principal */
 main {
+    position: relative;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 60px;
+    flex: 1; /* Garante que empurre o rodapé para o fim */
 }
 
-main h1 {
-    color: white;
+.titulo-principal {
+    color: var(--texto-principal);
+    font-size: 2.8rem;
     margin-bottom: 40px;
-    font-size: 2.5em;
+    font-weight: 800;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-section {
+.grade-cartoes {
     display: flex;
-    gap: 16px;
+    gap: 30px;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 40px;
 }
 
+/* Flashcards de Alta Performance 3D */
 .cartao {
-    width: 300px;
-    height: 400px;
-    perspective: 1000px;
+    width: 330px;
+    height: 460px;
+    perspective: 1500px;
 }
 
 .cartao-interno {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform-style: preserve-3d;
 }
 
@@ -50,23 +216,171 @@ section {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 15px;
+    border-radius: 24px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    border: 2px solid var(--borda);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px var(--sombra-card);
 }
 
 .cartao-frente {
-    background: white;
+    background: var(--bg-card-frente);
 }
 
 .cartao-verso {
-    background: #f4f4f4;
+    background: var(--bg-card-verso);
     transform: rotateY(180deg);
 }
 
 .cartao:hover .cartao-interno {
     transform: rotateY(180deg);
+}
+
+/* Mídia Interna dos Cards */
+.wrapper-imagem {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.wrapper-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.cartao:hover .wrapper-imagem img {
+    transform: scale(1.08);
+}
+
+.texto-card {
+    color: var(--texto-secundario);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.indicador-gire {
+    font-size: 0.85rem;
+    color: #22c55e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* Menu de Ferramentas */
+.barra-ferramentas {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 12px;
+    background: var(--blur-menu);
+    padding: 8px 16px;
+    border-radius: 100px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px var(--sombra-card);
+    z-index: 90;
+    border: 1px solid var(--borda);
+}
+
+.controles-acessibilidade {
+    display: flex;
+    gap: 8px;
+    border-right: 2px solid var(--borda);
+    padding-right: 12px;
+}
+
+.barra-ferramentas button {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--texto-principal);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.barra-ferramentas button:hover {
+    background: #22c55e;
+    color: white;
+}
+
+/* Área Dedicada e Premium para os Créditos no Final do Site */
+.container-rodape {
+    width: 100%;
+    background: var(--bg-rodape);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--borda);
+    padding: 30px 20px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.rodape-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.rodape-linha {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #22c55e, #a3e635);
+    border-radius: 2px;
+    margin: 0 auto 15px auto;
+}
+
+.container-rodape .creditos {
+    color: var(--texto-principal);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.container-rodape .autor {
+    background: linear-gradient(45deg, #22c55e, #a3e635);
+    padding: 4px 14px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 700;
+    margin-left: 5px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
+}
+
+.rodape-sub {
+    color: var(--texto-secundario);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Keyframes de Animação */
+@keyframes flutuarOrbe {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 40px) scale(1.15); }
+}
+
+@keyframes quedaFolha {
+    0% { top: -10%; transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(100px) rotate(180deg); }
+    100% { top: 110%; transform: translateX(-50px) rotate(360deg); }
+}
+
+@keyframes balancoCoala {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(8deg) translateY(-10px); }
 }

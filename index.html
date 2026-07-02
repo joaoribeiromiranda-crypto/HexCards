@@ -3,38 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Aí</title>
+    <title>Conecta Aí - Universo dos Coalas</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body class="tema-escuro">
+
+    <div class="fundo-animado">
+        <div class="orbe orbe-1"></div>
+        <div class="orbe orbe-2"></div>
+        <div class="orbe orbe-3"></div>
+    </div>
+
+    <div id="tela-entrada" class="splash-screen">
+        <div class="splash-conteudo">
+            <div class="splash-emoji">🐨</div>
+            <h1>Expedição Eucalipto</h1>
+            <p>Explore os mistérios e segredos dos marsupiais em uma experiência interativa premium.</p>
+            <button onclick="iniciarSite()" class="btn-principal">Iniciar Expedição</button>
+        </div>
+    </div>
+
+    <div id="container-folhas"></div>
+
+    <header class="barra-ferramentas">
+        <div class="controles-acessibilidade">
+            <button onclick="alterarFonte(-2)" title="Diminuir Texto">A-</button>
+            <button onclick="alterarFonte(2)" title="Aumentar Texto">A+</button>
+        </div>
+        <button id="btn-tema" onclick="alternarTema()" class="btn-alternador">☀️ Modo Claro</button>
+    </header>
+
     <main>
-        <h1>Flashcards de Estudo</h1>
-        <section>
+        <h1 class="titulo-principal">Mundo dos Coalas</h1>
+        
+        <section class="grade-cartoes">
             <article class="cartao">
                 <div class="cartao-interno">
                     <div class="cartao-frente">
-                        <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm9244_221010_02901.jpg?w=1600&h=900" alt="Pinguim filhote">
-                        <p>Pinguins conseguem voar como pássaros!</p>
+                        <div class="wrapper-imagem">
+                            <img src="https://static.biologianet.com/2019/07/coala.jpg" alt="Coala em ambiente natural">
+                        </div>
+                        <p class="texto-card">Do que os coalas se alimentam principalmente?</p>
+                        <div class="indicador-gire">Passe o mouse para girar 🔄</div>
                     </div>
                     <div class="cartao-verso">
-                        <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm9244_221010_02901.jpg?w=1600&h=900" alt="Pinguim filhote">
-                        <p>Pinguins não voam, mas são excelentes nadadores.</p>
+                        <div class="wrapper-imagem">
+                            <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/01-koala-eucalyptus-nationalgeographic_1481506.webp?w=1600&h=1067&q=100">
+                        </div>
+                        <p class="texto-card">Eles se alimentam quase que exclusivamente de folhas de eucalipto! Devido ao baixo valor calórico dessa dieta, eles precisam dormir até 20 horas por dia para poupar energia.</p>
                     </div>
                 </div>
             </article>
+
             <article class="cartao">
                 <div class="cartao-interno">
                     <div class="cartao-frente">
-                        <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm9244_221010_02901.jpg?w=1600&h=900" alt="Pinguim filhote">
-                        <p>Pinguins conseguem voar como pássaros!</p>
+                        <div class="wrapper-imagem">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrxC03VgDcN4DDUuKkyzqLsUyh4c25s7CLn82KWusscw&s=10" alt="Coala escalando árvore">
+                        </div>
+                        <p class="texto-card">Os coalas pertencem à família dos ursos?</p>
+                        <div class="indicador-gire">Passe o mouse para girar 🔄</div>
                     </div>
                     <div class="cartao-verso">
-                        <img src="https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/mm9244_221010_02901.jpg?w=1600&h=900" alt="Pinguim filhote">
-                        <p>Pinguins não voam, mas são excelentes nadadores.</p>
+                        <div class="wrapper-imagem">
+                            <img src="https://www.infoescola.com/wp-content/uploads/2008/05/coala-100008095.jpg" alt="Filhote de coala na bolsa materna">
+                        </div>
+                        <p class="texto-card">Não! Eles são mamíferos marsupiais (parentes dos cangurus). As mães possuem uma bolsa marsupial onde o filhote se desenvolve logo após o nascimento.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cartao">
+                <div class="cartao-interno">
+                    <div class="cartao-frente">
+                        <div class="wrapper-imagem">
+                            <img src="https://static.wikia.nocookie.net/mundo-animal/images/7/7a/112217_Papel-de-Parede-Koala--112217_800x600.jpg/revision/latest?cb=20140307232121&path-prefix=pt" alt="Detalhe de um coala em close">
+                        </div>
+                        <p class="texto-card">O que as mãos dos coalas têm em comum com as dos humanos?</p>
+                        <div class="indicador-gire">Passe o mouse para girar 🔄</div>
+                    </div>
+                    <div class="cartao-verso">
+                        <div class="wrapper-imagem">
+                            <img src="https://static.biologianet.com/2019/07/coala-e-seu-filhote.jpg" alt="Pata de um coala">
+                        </div>
+                        <p class="texto-card">Eles possuem impressões digitais únicas! Elas são tão parecidas com as digitais humanas que até mesmo microscópios de laboratórios criminais teriam dificuldade em diferenciá-las.</p>
                     </div>
                 </div>
             </article>
         </section>
     </main>
+
+    <footer class="container-rodape">
+        <div class="rodape-conteudo">
+            <div class="rodape-linha"></div>
+            <p class="creditos">
+                Projeto desenvolvido por: 
+                <span class="autor">João Ribeiro 2B</span>
+            </p>
+            <p class="rodape-sub">© 2026 Conecta Aí - Flashcards</p>
+        </div>
+    </footer>
+
+    <script>
+        function iniciarSite() {
+            const splash = document.getElementById('tela-entrada');
+            splash.classList.add('esconder');
+            setTimeout(() => {
+                splash.style.display = 'none';
+                gerarFolhas();
+            }, 600);
+        }
+
+        function alternarTema() {
+            const body = document.body;
+            const btn = document.getElementById('btn-tema');
+            
+            if (body.classList.contains('tema-escuro')) {
+                body.classList.replace('tema-escuro', 'tema-claro');
+                btn.innerHTML = "🌙 Modo Escuro";
+            } else {
+                body.classList.replace('tema-claro', 'tema-escuro');
+                btn.innerHTML = "☀️ Modo Claro";
+            }
+        }
+
+        let escalaFonte = 100;
+        function alterarFonte(valor) {
+            escalaFonte += valor;
+            if (escalaFonte >= 85 && escalaFonte <= 125) {
+                document.documentElement.style.setProperty('--fator-fonte', `${escalaFonte}%`);
+            }
+        }
+
+        function gerarFolhas() {
+            const container = document.getElementById('container-folhas');
+            const quantidade = 25;
+
+            for (let i = 0; i < quantidade; i++) {
+                const folha = document.createElement('div');
+                folha.classList.add('folha-eucalipto');
+                
+                folha.style.left = `${Math.random() * 100}vw`;
+                folha.style.animationDuration = `${Math.random() * 6 + 6}s`;
+                folha.style.animationDelay = `${Math.random() * -8}s`;
+                
+                const tamanho = Math.random() * 16 + 14;
+                folha.style.width = `${tamanho}px`;
+                folha.style.height = `${tamanho * 2.2}px`;
+
+                folha.addEventListener('mouseover', () => {
+                    folha.style.transform = 'translateY(40px) scale(1.5) rotate(90deg)';
+                    folha.style.filter = 'brightness(1.3)';
+                    folha.style.transition = 'transform 0.4s ease, filter 0.4s ease';
+                    setTimeout(() => {
+                        folha.style.transform = '';
+                        folha.style.filter = '';
+                    }, 2000);
+                });
+
+                container.appendChild(folha);
+            }
+        }
+    </script>
 </body>
 </html>
